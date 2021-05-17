@@ -1,0 +1,190 @@
+body.dark
+{
+	--back:   #121212;
+	--front:  #B3BBC0;
+	--border: var(--front);
+	--blue:   #7AFFCC;
+	--red:    #FF8171;
+	--orange: #FFC762;
+}
+
+body.light
+{
+	--front:  #323232;
+	--back:   #EEEEEE;
+	--border: var(--front);
+	--blue:   #348EFF;
+	--red:    #FF4B34;
+	--orange: #FFAB12;
+}
+
+body
+{
+	background-color: var(--back);
+	color: var(--front);
+	font-size: 12pt;
+	font-family: 'times new roman', serif;
+}
+table, td
+{
+	border: 1px solid var(--front);
+}
+form
+{
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	margin-bottom: 1.5em;
+	row-gap: 0.5em;
+}
+form .row
+{
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	align-self: stretch;
+}
+
+input[type=date], input[type=time], input[type=number]
+{
+	background: rgba(255, 255, 255, 0);
+	color: var(--front);
+	width: 100%;
+	border: 1px solid var(--border);
+}
+#form-toolbar
+{
+	padding-top: 0.75em;
+	align-self: stretch;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr [col-start] 2fr) 1fr;
+}
+#form-toolbar :nth-child(1)
+{
+	grid-column-start: col-start 1;
+}
+#form-toolbar :nth-child(2)
+{
+	grid-column-start: col-start 2;
+}
+
+#tables
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 1em;
+}
+#tables div
+{
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+#toolbar
+{
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 0.5fr [col-start] 4fr) 1fr [col-tog] 2fr 0.5fr;
+}
+#bottom
+{
+	width: 100%;
+	position: fixed;
+	bottom: 0.5rem;
+	gap: 0.5rem;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+/*
+	Shouldn't CSS have a way to use `:nth-child(n)`,
+	and something like `grid-column-start: col-start n`?
+*/
+#toolbar #undo
+{
+	grid-column-start: col-start 1;
+}
+#toolbar #save
+{
+	grid-column-start: col-start 2;
+}
+#toolbar #redo
+{
+	grid-column-start: col-start 3;
+}
+#toolbar #mode-toggle
+{
+	grid-column-start: col-tog;
+}
+
+
+
+button, input[type=submit]
+{
+	border: none;
+	padding: 4px;
+	border-radius: 2em;
+	font-family: 'times new roman', serif;
+	font-weight: bold;
+
+}
+button:disabled
+{
+	opacity: 0.5;
+}
+
+body.light button, body.light input[type=submit]
+{
+	color: var(--back);
+}
+body.light #apply-data
+{
+	background-color: var(--blue);
+}
+body.light #delete
+{
+	background-color: var(--red);
+}
+body.light #save
+{
+	background-color: var(--blue);
+}
+body.light #undo, body.light #redo
+{
+	background-color: var(--orange);
+}
+body.light #mode-toggle
+{
+	background-color: var(--front);
+	color: var(--back);
+}
+
+body.dark button, body.dark input[type=submit]
+{
+	background-color: #323232;
+}
+
+body.dark #apply-data
+{
+	color: var(--blue);
+}
+
+body.dark #delete
+{
+	color: var(--red);
+}
+
+body.dark #save
+{
+	color: var(--blue);
+}
+
+body.dark #undo, body.dark #redo
+{
+	color: var(--orange);
+}
+body.dark #mode-toggle
+{
+	color: var(--front);
+}

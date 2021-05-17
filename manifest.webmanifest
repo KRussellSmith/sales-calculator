@@ -1,0 +1,15 @@
+{
+  "background_color": "#348EFF",
+  "description": "A calculator for my business",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "krs_logo_192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "Sales Calculator",
+  "short_name": "SalesCalc",
+  "start_url": "/"
+}

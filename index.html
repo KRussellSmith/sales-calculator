@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<meta http-equiv='X-UA-Compatible' content='IE=Edge'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<title>Sales Calculator</title>
+	<link rel='stylesheet' href='style.css'>
+	<link rel='manifest' href='manifest.webmanifest'>
+</head>
+
+<body>
+	<form action='#'>
+		<div class='row'>
+			<label for='date'>Fecha</label>
+			<input type='date' id='date' required>
+		</div>
+		<div class='row'>
+			<label for='left'>Plata Dejada</label>
+			<input type='number' step='0.01' id='left' required>
+		</div>
+		<div class='row'>
+			<label for='spent'>Plata Gastada</label>
+			<input type='number' step='0.01' id='spent' required>
+		</div>
+		<div class='row'>
+			<label for='sold'>Vendido</label>
+			<input type='number' step='1' id='sold' required>
+		</div>
+		<div class='row'>
+			<label for='start'>Comienzo</label>
+			<input type='time' id='start' required>
+		</div>
+		<div class='row'>
+			<label for='end'>Final</label>
+			<input type='time' id='end' required>
+		</div>
+		<div id='form-toolbar'>
+			<button id='delete' disabled>Borrar</button>
+			<input  id='apply-data' type='submit' value='Agregar'>
+		</div>
+	</form>
+	<div id='tables'>
+		<div id='avg'>
+			<table>
+				<thead>
+					<tr>
+						<th colspan='2'>Promedio</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Ganado</td>
+					<td id='avg-made'>N/A</td>
+				</tr>
+				<tr>
+					<td>Vendido</td>
+					<td id='avg-sold'>N/A</td>
+				</tr>
+				<tr>
+					<td>Tiempo</td>
+					<td id='avg-time'>N/A</td>
+				</tr>
+				<tr>
+					<td>Lucro</td>
+					<td id='avg-profit'>N/A</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id='day'>
+			<table>
+				<thead>
+					<tr>
+						<th colspan='2' id='picked'>[ fecha ]</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>Ganado</td>
+					<td id='day-made'>N/A</td>
+				</tr>
+				<tr>
+					<td>Vendido</td>
+					<td id='day-sold'>N/A</td>
+				</tr>
+				<tr>
+					<td>Tiempo</td>
+					<td id='day-time'>N/A</td>
+				</tr>
+				<tr>
+					<td>Lucro</td>
+					<td id='day-profit'>N/A</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id='bottom'>
+		<div id='toolbar'>
+		
+			<button id='undo' disabled>Deshacer</button>
+			<button id='save' disabled>Guardar</button>
+			<button id='redo' disabled>Rehacer</button>
+			
+			<button id='mode-toggle'></button>
+		</div>
+		<footer>&copy; <span id='curr-year'></span> — K. Russell Smith</footer>
+	</div>
+	<script type='module'>
+		'use strict';
+		import main from './main.js';
+		window.onload = e => main();
+	</script>
+</body>
+</html>
