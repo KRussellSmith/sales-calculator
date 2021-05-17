@@ -8,7 +8,6 @@ const Model = (() =>
 {
 	const dataKey = 'bizData';
 	const themeKey = `${ dataKey }-theme`;
-	//const cache = [];
 	return {
 		data: null,
 		cache: [],
@@ -18,7 +17,6 @@ const Model = (() =>
 		},
 		save()
 		{
-			//cache.push(localStorage.getItem(dataKey));
 			localStorage.setItem(dataKey, JSON.stringify(this.data));
 		},
 		get theme()
@@ -30,11 +28,6 @@ const Model = (() =>
 			localStorage.setItem(themeKey, theme);
 			return theme;
 		},
-		/*unsave()
-		{
-			localStorage.setItem(dataKey, cache.pop());
-		},*/
-		
 		getDate(date)
 		{
 			return this.data.dates.find(x => x.date === date) ?? null;
@@ -151,8 +144,7 @@ const Commands = {
 	
 	// Saving used to be a Command (and ergo was itself undoable),
 	// I decided that the behavior was unexpected,
-	// and gobbled up extra memory, so that's no longer the case
-	// (although the code for it is still here, just commented out.)
+	// and gobbled up extra memory, so that's no longer the case.
 	// The caveat here is: if you undo or redo, you must still remember to save.
 	Save: () =>
 	{
@@ -211,17 +203,13 @@ const Observer = (() =>
 					App.syncData();
 				break;
 				case Event.SAVE:
-					//Command.perform(Commands.Save());
 					Model.save();
 					changes = 0;
 					break;
 				// From application's response to user input:
 				case Event.DATA_CHANGED:
-					//document.querySelector `#save`.disabled = false;
 					App.syncData();
 					App.updateAverageTable(Model.average());
-					//++changes[0];
-					
 					/*
 						The Command object is ‘hot’ when its last command was performed for the first time (and not undone or redone);
 						in which case, there aren't any redos to worry about, and we know the program is in an unsaved state.
@@ -251,11 +239,6 @@ const Observer = (() =>
 					}
 					break;
 				case Event.DATA_UNCHANGED:
-					//changes.shift();
-					/*if (changes[0] === 0)
-					{
-						document.querySelector `#save`.disabled = true;
-					}*/
 					--changes;
 					App.syncData();
 					App.updateAverageTable(Model.average());
@@ -264,15 +247,6 @@ const Observer = (() =>
 					document.querySelector `#undo`.disabled = !Command.canUndo();
 					document.querySelector `#redo`.disabled = !Command.canRedo();
 					break;
-				/*case Event.UNSAVED:
-					//changes.shift();
-					break;
-				case Event.UNDO:
-					//--changes;
-					break;
-				case Event.REDO:
-					//changes = lastChanges + 1;
-					break;*/
 			}
 			document.querySelector `#save`.disabled = changes === 0;
 			
