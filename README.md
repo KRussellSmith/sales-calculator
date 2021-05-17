@@ -10,6 +10,6 @@ as it examplifies the following:
 * Semantic HTML (e.g. use of tables for displaying tabular data)
 * Modern CSS features such as Flexbox & Grid
 * The Observer pattern (using it atop JavaScript's Event-Driven architecture feels a tad silly, but I wanted to give it a try; kinda has a yin-yang effect)
-* H\*ck, it even has a Roman numeral converter… <wbr>(bored programming always yields interesting results!)
+* Heck, it even has a Roman numeral converter… <wbr>(bored programming always yields interesting results!)
 
 **NOTE:**  While the code (including comments) are in English, the application itself is in Spanish; this otherwise capricious decision is due to my desire to learn the common app interface commands in Spanish.
