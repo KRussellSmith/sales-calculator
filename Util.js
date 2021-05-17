@@ -5,7 +5,7 @@ export default {
 		let price = x;
 		if (!price.includes('.'))
 		{
-			price += '.00'
+			price += '.00';
 		}
 		else if (price.split('.')[1].length == 1)
 		{
