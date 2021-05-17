@@ -89,6 +89,10 @@ export default {
 		}
 		return result;
 	},
+	timeFormat(hours, minutes)
+	{
+		return `${`0${hours}`.slice(-2)}:${`0${minutes}`.slice(-2)}`;
+	},
 	calcHours(start, end)
 	{
 		const [ startH, startM ] = start.split(':');
@@ -100,7 +104,7 @@ export default {
 			--hours;
 			minutes += 60;
 		}
-		return `${hours}:${minutes}`;
+		return this.timeFormat(hours, minutes);
 	},
 	minutesToTime(minutes)
 	{
@@ -110,6 +114,6 @@ export default {
 			++hours;
 			minutes -= 60;
 		}
-		return `${hours}:${minutes}`;
+		return this.timeFormat(hours, minutes);
 	},
 };
